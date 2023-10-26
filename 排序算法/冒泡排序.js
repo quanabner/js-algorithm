@@ -10,6 +10,8 @@
  *
  *
  */
+
+// 第一种写法
 function bubbleSort(arr) {
   const n = arr.length;
   let swapped;
@@ -26,6 +28,34 @@ function bubbleSort(arr) {
       }
     }
   } while (swapped);
+
+  return arr;
+}
+
+// 第二种写法
+function bubbleSort1(arr) {
+  const n = arr.length;
+  let swapped; // 用于标记是否在一轮遍历中发生了交换
+
+  for (let i = 0; i < n - 1; i++) {
+    swapped = false;
+
+    // 在每轮中遍历数组，比较相邻的元素
+    for (let j = 0; j < n - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        // 如果顺序不正确，交换两个元素的位置
+        const temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+        swapped = true;
+      }
+    }
+
+    // 如果一轮中没有发生交换，说明数组已经有序，可以提前结束
+    if (!swapped) {
+      break;
+    }
+  }
 
   return arr;
 }
